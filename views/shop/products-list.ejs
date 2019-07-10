@@ -1,0 +1,43 @@
+<%- include('../partials/header.ejs') %>
+
+<main>
+        <section class="products">
+            <h1 class="heading-secondary" > List of all the products</h1>
+            <% if (products.length > 0){  %>
+                <% for ( let prod of products){ %>
+                    <div class="row">
+                        <div class="product-card">
+                            <h3 class="product-card__heading"><%= prod.title %></h3>
+                            <div class="product-card__image">
+                               <img src="/public/images/Kug5xR.jpg" alt="">
+                            </div>
+                            <p class="product-card__description ">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Qui, similique.</p>
+                            <div class="product-card__actions">
+                                <a href="/products/<%= prod.id %>" class="btn btn-text btn-text--small product-card__options">Details</a>
+                                <%- include('../partials/addToCart.ejs',{product : prod}) %>
+                                <button onclick="post()">Add to cart</button>
+                            </div>
+                        </div>
+                    </div>
+                <% } %>
+            <%  }else{ %>
+                <h1 class="heading-tertiary">No products found</h1>
+            <% } %>
+        </section>
+    </main>
+</body>
+
+<script>
+
+function post(){
+    var product = document.getElementById("a").value;
+    axios.post("cart",{
+        productId : product;
+    })
+}
+
+
+
+</script>
+
+</html>

@@ -1,0 +1,47 @@
+<%- include('../partials/header.ejs') %>
+
+    <!-- <main>
+        <section class="form-box">
+            <h2 class="heading-secondary">Login</h2>
+            <form action="/login"  method="POST" class="form-add">
+                <div class="form-group">
+                    <input type="text" placeholder="Email" name="email" class="form-input" >
+                </div>
+                <div class="form-group">
+                    <input type="text" placeholder="password" name="password" class="form-input" >
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-text ">Login</button>
+                </div>
+               
+            </form>
+        </section>
+      
+    </main> -->
+
+    <section class="container">
+        <div class="row d-flex justify-content-center">
+            <div class="col-lg-6 col-md-9 col-sm-10  col-8 my-5 border border-primary p-3 rounded">
+                <% if(error) { %>
+                    <div class="d-flex justify-content-center alert alert-danger"><%= error %></div>
+                <% } %>
+
+                <form action="/login" method="POST">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Email address</label>
+                        <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Password</label>
+                        <input type="password" name ="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary">Login</button>
+                </form>
+            </div>
+        </div>
+    </section>
+   
+</body>
+</html>

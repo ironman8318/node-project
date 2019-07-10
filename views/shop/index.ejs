@@ -1,0 +1,113 @@
+<%- include('../partials/header.ejs') %>
+
+<!-- <main>
+        <section class="products container">
+            <h1 class="heading-secondary" > List of all the products</h1>
+            <% if (products.length > 0){  %>
+                <% for ( let prod of products){ %>
+                    <div class="row1">
+                        <div class="product-card">
+                            <h3 class="product-card__heading"><%= prod.title %></h3>
+                            <div class="product-card__image">
+                               <img src="/public/images/Kug5xR.jpg" alt="">
+                            </div>
+                            <p class="product-card__description "><%= prod.description %></p>
+                            <div class="product-card__actions">
+                                <a href="/products/<%= prod._id %>" class="btn btn-text btn-text--small product-card__options">Details</a>
+                                <%- include('../partials/addToCart.ejs',{product : prod}) %>
+
+
+                                
+
+                            </div>
+                        </div>
+                    </div>
+                <% } %>
+            <%  }else{ %>
+                <h1 class="heading-tertiary">No products found</h1>
+            <% } %>
+        </section>
+    </main> -->
+
+    <section class="container">
+        <div class="row my-5 d-flex justify-content-center"> 
+    <% if (products.length > 0){  %>
+        <% for ( let prod of products){ %>
+            <div class="rounded  shadow card col-lg-4 my-2 col-md-6 " style="width: 18rem;">
+                <div class="card-body">
+                    <img class="card-img-top" src="<%= prod.imageURL %>" alt="Card image cap">
+                    <h5 class="card-title"><%= prod.title %></h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Price : $<%= prod.price %></h6>
+                    <p class="card-text"><%= prod.description %></p>
+                    <div>
+                        <div class="row d-flex justify-content-center">
+                            <%- include('../partials/addToCart.ejs',{product : prod}) %>
+                            
+                        </div>
+                        <div class="row">
+                            <a href="/products/<%= prod._id %>" class="btn btn-sm   col-lg-12  col-md-12 my-2 mr-1 btn-primary">Details</a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <% } %>
+            <%  }else{ %>
+                <h1 class="heading-tertiary">No products found</h1>
+            <% } %>
+            
+                
+        </div>
+        <nav aria-label="..." class="d-flex justify-content-center">
+                <ul class="pagination">
+                
+                  <li class="page-item <% if(!hasPreviousPage) { %> disabled <% }else{ %> '' <%}%>">
+                    <a class="page-link" href="?page=<%= previousPage %>" tabindex="-1">Previous</a>
+                  </li>
+                  <% if(previousPage > 0){ %>
+                  <li class="page-item"><a class="page-link" href="?page=<%= previousPage %>"><%= previousPage %></a></li>
+                  <% } %>
+                  <li class="page-item active">
+                    <a class="page-link" href="?page=<%= currentPage %>"><%= currentPage %><span class="sr-only">(current)</span></a>
+                  </li>
+                  <li class="page-item"><a class="page-link" href="?page=<%= nextPage %>"><%= nextPage %></a></li>
+                  <li class="page-item <% if(!hasNextPage) { %> disabled <% }else{ %> '' <%}%>">
+                    <a class="page-link" href="?page=<%= nextPage %>" tabindex="-1">Next</a>
+                  </li>
+                </ul>
+              </nav>
+        <!-- <% if (currentPage != 1) { %>
+            <a href="?page=1">1</a> 
+        <% } %>
+        <% if (hasPreviousPage && previousPage != 1) { %>
+            <a href="?page=<%= previousPage %>"><%= previousPage %></a> 
+        <% } %>
+        <a href="?page=<%= currentPage %>"><%= currentPage %> </a> 
+        <% if (hasNextPage) { %>
+            <a href="?page=<%= nextPage %>"><%= nextPage %></a> 
+        <% } %>
+        <% if(nextPage!= lastPage ) { %>
+            <a href="?page=<%= lastPage %>"><%= lastPage %></a> 
+
+        <% } %> -->
+    </section>
+</body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.js"></script>
+
+<script>
+
+    // var id  = document.querySelector("#a").value;
+    // console.log(id);
+    // document.querySelector("#on").addEventListener("click",post);
+    // function post(){
+    //     axios.post("/cart" , {
+    //         productId : id
+    //     })
+
+    // }
+
+</script>
+
+
+</html>

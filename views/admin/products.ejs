@@ -1,0 +1,88 @@
+<%- include('../partials/header.ejs') %>
+
+<main>
+        <!-- <section class="products">
+            <h1 class="heading-secondary" > List of all the products</h1>
+            <% if (products.length > 0){  %>
+                <% for ( let prod of products){ %>
+                    <div class="row">
+                        <div class="product-card">
+                            <h3 class="product-card__heading"><%= prod.title %></h3>
+                            <div class="product-card__image">
+                                <img src="/public/images/Kug5xR.jpg" alt="">
+                             </div>
+                            <p class="product-card__description"><%= prod.description %></p>
+                            <div class="product-card__actions">
+                                <form action="/admin/edit-product/<%= prod._id %>" method="get" class="product-card__options">
+                                    <input type="hidden" value="true" name="edit">
+                                    <button  class="btn btn-text ">Edit</button>
+                                </form>
+                                    <input type="hidden" value="<%= prod._id %>" name="productId">
+                                    <button type="submit" class="btn btn-text ">Delete</button>
+                            </div>
+                        </div>
+                    </div>
+                <% } %>
+            <%  }else{ %>
+                <h1 class="heading-tertiary">No products found</h1>
+            <% } %> -->
+
+            
+    <section class="container">
+        <div class="row my-5 d-flex justify-content-center"> 
+    <% if (products.length > 0){  %>
+        <% for ( let prod of products){ %>
+            <div class="rounded  shadow card col-lg-4 my-2 col-md-6 " style="width: 18rem;">
+                <div class="card-body">
+                    <img class="card-img-top" src="<%= prod.imageURL %>" alt="Card image cap">
+                    <h5 class="card-title"><%= prod.title %></h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Price : $<%= prod.price %></h6>
+                    <p class="card-text"><%= prod.description %></p>
+                    <div>
+                        <div class="row d-flex justify-content-center">
+                            <form action="/admin/edit-product/<%= prod._id %>" method="get" class="product-card__options">
+                                <input type="hidden" value="true" name="edit">
+                                <button  class="btn btn-text ">Edit</button>
+                            </form>
+                        </div>
+                        <div class="row">
+                            <input type="hidden" value="<%= prod._id %>" name="productId">
+                            <button type="button" onclick="deleteProduct(this);" class="btn btn-text ">Delete</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <% } %>
+            <%  }else{ %>
+                <h1 class="heading-tertiary">No products found</h1>
+            <% } %>
+            
+                
+        
+        </section>
+        
+
+        <nav aria-label="..." class="d-flex justify-content-center">
+            <ul class="pagination">
+            
+              <li class="page-item <% if(!hasPreviousPage) { %> disabled <% }else{ %> '' <%}%>">
+                <a class="page-link" href="?page=<%= previousPage %>" tabindex="-1">Previous</a>
+              </li>
+              <li class="page-item"><a class="page-link" href="?page=<%= previousPage %>"><%= previousPage %></a></li>
+              <li class="page-item active">
+                <a class="page-link" href="?page=<%= currentPage %>"><%= currentPage %><span class="sr-only">(current)</span></a>
+              </li>
+              <li class="page-item"><a class="page-link" href="?page=<%= nextPage %>"><%= nextPage %></a></li>
+              <li class="page-item <% if(!hasNextPage) { %> disabled <% }else{ %> '' <%}%>">
+                <a class="page-link" href="?page=<%= nextPage %>" tabindex="-1">Next</a>
+              </li>
+            </ul>
+          </nav>
+    </main>
+</body>
+
+</html>
+
+
+<script src="/js/admin.js"></script>
+<script src="/js/bootstrap.js"></script>

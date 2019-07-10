@@ -1,0 +1,70 @@
+<%- include('../partials/header.ejs') %>
+<!-- 
+<main>
+    <section class="products">
+        <h1 class="heading-secondary" >Y Cart </h1>
+        <% if(products.length <= 0 ){ %>
+            <h1>Cart empty Stupid !!!!</h1>
+        <% }else { %>
+            <% for(let prod of products) { %>
+                <div class="product-details">
+                    
+
+                    
+                    <h3 class="product-card__heading"><%= prod.productId.title %></h3>
+                    <h3 class="product-card__heading"><%= prod.quantity %></h3>
+                    <hr>
+                    <div class="product-card__image">
+                        <img src="/public/images/Kug5xR.jpg" alt="">
+                    </div>
+                    <p class="product-card__description "><%= prod.productId.description %></p>
+                    <form action="/cartDeleteItem" method ="POST">
+                        <input type="hidden" name="productId" value="<%= prod.productId._id %>">
+                        <button type="submit">Delete</button>
+                    </form>
+                               
+        
+                </div>
+            <% } %>
+            <% } %>  
+
+            <form action="/order" method ="POST">
+            <input type="hidden"> -->
+                <!-- <button type="submit">Order</button>
+            </form>
+        
+    </section>
+</main> --> -->
+
+<section class="container">
+    <div class="row d-flex justify-content-center">
+        
+        <% if(products.length <= 0 ){ %>
+            <h1>Cart empty Stupid !!!!</h1>
+        <% }else { %>
+            <% for(let prod of products) { %>
+        
+            <div class="card col-lg-5 mr-2 border-success mb-3" style="max-width: 18rem;">
+                <div class="card-header bg-transparent border-success">Quantity : <%= prod.quantity %></div>
+                <div class="card-body text-success">
+                    <h5 class="card-title"><%= prod.productId.title %></h5>
+                    <p class="card-text"><%= prod.productId.description %></p>
+                </div>
+                <div class="card-footer bg-transparent border-success"><form action="/cartDeleteItem" class="d-flex justify-content-center" method ="POST">
+                    <input type="hidden" name="productId" value="<%= prod.productId._id %>">
+                    <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                </form></div>
+            </div>
+        <% } %>
+        <% } %>  
+
+    </div>
+    
+    <form action="/order" class="d-flex justify-content-center" method ="POST">
+        <!-- <input type="hidden"> -->
+        <button type="submit" class="btn btn-lg btn-success">Order</button>
+    </form>
+</section>
+</body>
+
+</html>
