@@ -107,7 +107,7 @@ console.log(error);
     
 // })
 
-mongoose.connect("mongodb://localhost:27017/shop").then(result => {
+mongoose.connect("mongodb://shop:shop123@ds053539.mlab.com:53539/shop-in-node").then(result => {
 
     console.log("database connceted");
     app.listen(3000);
